@@ -1,0 +1,10 @@
+rules:
+  - id: timing-based-username-enumeration
+    message: |
+      Potential timing-based username enumeration vulnerability.
+      time.sleep() is only called for valid usernames, creating
+      a timing difference that attackers can exploit.
+    severity: WARNING
+    languages: [python]
+    pattern: time.sleep(...)
+      # your pattern here
