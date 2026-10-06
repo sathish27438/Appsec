@@ -1,0 +1,8 @@
+rules:
+  - id: "mip-flask-bf"
+    name: "Flask Brute Force Vulnerability"
+    description: "This rule detects potential brute force vulnerabilities in Flask applications."
+    severity: "high"
+    tags: ["security", "flask", "brute-force"]
+    pattern:
+      - pattern: failed_attempts[$IP] = 0
