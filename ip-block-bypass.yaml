@@ -1,8 +1,8 @@
 rules:
-  - id: "mip-flask-bf"
-    name: "Flask Brute Force Vulnerability"
-    description: "This rule detects potential brute force vulnerabilities in Flask applications."
-    severity: "high"
-    tags: ["security", "flask", "brute-force"]
-    pattern:
-      - pattern: failed_attempts[$IP] = 0
+  - id: flask-brute-force-ip-reset
+    message: |
+      Counter resets on successful login allowing brute force bypass.
+      Rate limiting should be based on username not IP address.
+    severity: WARNING
+    languages: [python]
+    pattern: failed_attempts[$IP] = 0
