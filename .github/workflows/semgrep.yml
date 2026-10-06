@@ -16,4 +16,4 @@ jobs:
         run: pip install semgrep
         
       - name: Run Semgrep
-        run: semgrep --config timing-vuln.yaml .
+        run: semgrep --config timing-vuln.yaml --config ip-block-bypass.yaml .
