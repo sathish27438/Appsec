@@ -1,0 +1,11 @@
+rules:
+  - id: bypass-2fa-direct-session-assignment
+    message: |
+      2FA Bypass vulnerability. Session token assigned directly after password check.
+    severity: ERROR
+    languages:
+      - python
+    pattern: |
+      if login_check(...):
+          ...
+          session[$KEY] = $VAL
