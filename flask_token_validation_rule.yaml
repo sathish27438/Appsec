@@ -1,0 +1,15 @@
+rules:
+  - id: detect-password-reset-account-takeover
+    message: |
+      Password Reset Token Account Takeover. 
+      The reset function checks if a token exists, but fails to verify that 
+      the target username matches the owner of the token.
+    severity: ERROR
+    languages:
+      - python
+    pattern: |
+      def reset_password(...):
+          ...
+          if $TOKEN in $STORE:
+              $USERS[$USER][$KEY] = $NEW_PASS
+              ...
