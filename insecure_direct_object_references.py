@@ -44,11 +44,10 @@ def login():
         return jsonify({"message": "Invalid username or password"}), 401
 
 @app.route('/message', methods=['GET'])
-
 def message():
     user_id = request.args.get('id')
     username = session.get('username')
-    if not user_id and username not in session:
+    if not user_id or not username:
         return jsonify({"error": "Missing id parameter"}), 400
 
     message = get_message(user_id)

@@ -1,0 +1,13 @@
+rules:
+  - id: detect-idor-functionality-in-retriving
+    message: |
+      Insecure Direct Object Reference (IDOR) detected. The function retrieves resources by ID without validating session ownership against the requested data."
+    severity: ERROR
+    languages:
+      - python
+    pattern: |
+      def get_message(...):
+          ...
+          if $USER[$MESSAGE][$ID] == requested_id:
+              ...
+             
