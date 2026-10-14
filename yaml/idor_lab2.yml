@@ -1,0 +1,17 @@
+rules:
+  - id: detect-account-takeover-via-idor
+    message: |
+      Account Takeover IDOR detected. The application extracts an account identifier from user input (POST data) and uses it directly to modify database records without verifying if the target ID matches the authenticated session owner.
+    severity: ERROR
+    languages:
+      - python
+    pattern: |
+      def $ROUTE(...):
+          ...
+          $PAYLOAD = request.get_json()
+          ...
+          $TARGET = $PAYLOAD.get(...)
+          ...
+          $DB[$TARGET][...] = ...
+      
+             
